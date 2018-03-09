@@ -1,33 +1,26 @@
+/*
 const http = require('http');
 const hostname = '127.0.0.1';
 const PORT = process.env.PORT || 3000;
 
 const server = http.createServer((req, res) => {
-	/*
-	server.get('/webhook/', function (req, res) {
-		if (req.query['hub.verify_token'] === '<validation_token>') {
-			res.send(req.query['hub.challenge']);
-		}
-		res.send('Error, wrong validation token');
-	})
-	*/
   res.statusCode = 200;
   res.setHeader('Content-Type', 'text/plain');
   res.end('Hello World\n');
 
 });
 server.listen(PORT);
+*/
 
-/*
 import express from 'express';
 import bodyParser from 'body-parser';
 import request from 'request';
-import config from '../config';
+//import config from '../config';
 
 const app = express();
 const port = '7123';
-const VERIFY_TOKEN = config.VERIFY_TOKEN;
-const PAGE_TOKEN = config.PAGE_TOKEN;
+const VERIFY_TOKEN = 'YOUR_TOKEN';
+const PAGE_TOKEN = 'PAGE_TOKEN';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -83,4 +76,3 @@ function sendTextMessage(sender, text) {
     }
   });
 }
-*/
