@@ -1,7 +1,7 @@
 const http = require('http');
 const hostname = '127.0.0.1';
 const PORT = process.env.PORT || 3000;
-/*
+
 const server = http.createServer((req, res) => {
 	server.get('/webhook/', function (req, res) {
 		if (req.query['hub.verify_token'] === '<validation_token>') {
@@ -15,7 +15,8 @@ const server = http.createServer((req, res) => {
 
 });
 server.listen(PORT);
-*/
+
+/*
 import express from 'express';
 import bodyParser from 'body-parser';
 import request from 'request';
@@ -80,3 +81,4 @@ function sendTextMessage(sender, text) {
     }
   });
 }
+*/
