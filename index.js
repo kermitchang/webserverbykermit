@@ -11,8 +11,12 @@ app.get('/', function (req, res) {
     res.send(req.query['hub.challenge']);
   }
   res.send('Error, wrong validation token');
-  alert("HAHA");
+  console.log("In get");
 });
+
+app.post('/', async function (ctx, next) {
+  console.log(ctx.body)
+}
 
 app.listen(PORT, function () {
   console.log('Example app is running on port 3000!');}
