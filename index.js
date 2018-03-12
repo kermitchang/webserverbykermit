@@ -21,10 +21,10 @@ app.get('/', function (req, res) {
 });
 
 app.post('/', function (req, res) {
-	test("post");
-	console.log(req.body);
+	var a = "post";
+	a = a + req.body;
 	const messaging_events = req.body.entry[0].messaging;
-	test(messaging_events);
+	test(a);
 	for (let i = 0; i < messaging_events.length; i++) {
 	  	const event = req.body.entry[0].messaging[i];
 	  	const sender = event.sender.id;
