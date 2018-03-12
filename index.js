@@ -25,6 +25,9 @@ app.post('/', function (req, res) {
 	a = a + req.body + "\n";
 	
 	const messaging_events = req.body.entry[0].messaging;
+
+	a = a + "len:" + messaging_events.length ;
+	/*
 	for (let i = 0; i < messaging_events.length; i++) {
 	  	const event = req.body.entry[0].messaging[i];
 	  	const sender = event.sender.id;
@@ -35,7 +38,7 @@ app.post('/', function (req, res) {
 	      //sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
 	    }
 	}
-	
+	*/
 	test(a);
 	res.sendStatus(200);
 });
