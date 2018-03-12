@@ -23,6 +23,7 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
 	var a = "post\n";
 	a = a + req.body + "\n";
+	/*
 	const messaging_events = req.body.entry[0].messaging;
 	for (let i = 0; i < messaging_events.length; i++) {
 	  	const event = req.body.entry[0].messaging[i];
@@ -34,6 +35,7 @@ app.post('/', function (req, res) {
 	      //sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
 	    }
 	}
+	*/
 	test(a);
 	res.sendStatus(200);
 });
