@@ -21,20 +21,20 @@ app.get('/', function (req, res) {
 });
 
 app.post('/', function (req, res) {
-	var a = "post";
-	a = a + req.body;
+	var a = "post\n";
+	a = a + req.body + "\n";
 	const messaging_events = req.body.entry[0].messaging;
-	test(a);
 	for (let i = 0; i < messaging_events.length; i++) {
 	  	const event = req.body.entry[0].messaging[i];
 	  	const sender = event.sender.id;
 	  	if (event.message && event.message.text) {
 	      const text = event.message.text;
 	      console.log(text);
-	      test(text);
+	      a = a + text + "\n";
 	      //sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
 	    }
 	}
+	test(a);
 	res.sendStatus(200);
 });
 
@@ -50,6 +50,33 @@ function test(a){
    		}
    	console.log("The file was saved!");
 	});
+}
+
+function sendTextMessage(sender, text) {
+  
+  const messageData = {
+    text: text
+  }
+
+  request({
+    url: 'https://graph.facebook.com/v2.6/me/messages',
+    qs: {
+        access_token:PAGE_TOKEN
+    },
+    method: 'POST',
+    json: {
+      recipient: {
+        id: sender
+      },
+      message: messageData,
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    }
+  });
 }
 
 
