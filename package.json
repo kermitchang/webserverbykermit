@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/kermitchang/webserverbykermit/issues"
   },
-  "homepage": "https://github.com/kermitchang/webserverbykermit#readme"
+  "homepage": "https://github.com/kermitchang/webserverbykermit#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }

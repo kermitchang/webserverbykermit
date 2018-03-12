@@ -1,3 +1,22 @@
+const PORT = process.env.PORT || 3000;
+const express = require('express');
+const app = express(); //建立一個Express伺服器
+
+const VERIFY_TOKEN = 'YOUR_TOKEN';
+const PAGE_TOKEN = 'PAGE_TOKEN';
+
+app.get('/', function (req, res) {
+  //res.send('<h1>Express is excellent!</h1>')
+  if (req.query['hub.verify_token'] === VERIFY_TOKEN) {
+    res.send(req.query['hub.challenge']);
+  }
+  res.send('Error, wrong validation token');
+});
+
+app.listen(PORT, function () {
+  console.log('Example app is running on port 3000!');}
+); //告訴server聽取3000這個Port
+/*
 const http = require('http');
 const hostname = '127.0.0.1';
 const PORT = process.env.PORT || 3000;
@@ -9,6 +28,7 @@ const server = http.createServer((req, res) => {
 
 });
 server.listen(PORT);
+*/
 
 /*
 import express from 'express';
