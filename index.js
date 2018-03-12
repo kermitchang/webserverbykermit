@@ -30,6 +30,7 @@ app.post('/', function (req, res) {
 	  	if (event.message && event.message.text) {
 	      const text = event.message.text;
 	      console.log(text);
+	      test(text);
 	      //sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
 	    }
 	}
