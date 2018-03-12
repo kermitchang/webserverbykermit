@@ -15,6 +15,7 @@ app.get('/', function (req, res) {
   if (req.query['hub.verify_token'] === VERIFY_TOKEN) {
     res.send(req.query['hub.challenge']);
   }
+  test();
   res.send('HAHA');
   console.log("In get");
 });
