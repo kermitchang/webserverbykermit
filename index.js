@@ -23,7 +23,7 @@ app.get('/', function (req, res) {
     res.send(req.query['hub.challenge']);
   }
   test();
-  res.send('Error, wrong validation token');
+  res.send('HAHA');
   console.log("In get");
 });
 /*
