@@ -1,13 +1,44 @@
 const PORT = process.env.PORT || 3000;
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express(); //建立一個Express伺服器
 
 const VERIFY_TOKEN = 'YOUR_TOKEN';
 const PAGE_TOKEN = 'PAGE_TOKEN';
 var fs = require('fs');
 
-function test()
-{
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get('/', function (req, res) {
+  //res.send('<h1>Express is excellent!</h1>')
+  if (req.query['hub.verify_token'] === VERIFY_TOKEN) {
+    res.send(req.query['hub.challenge']);
+  }
+  res.send('HAHA');
+  console.log("In get");
+});
+
+app.post('/', function (req, res) {
+	console.log(req.body);
+	const messaging_events = req.body.entry[0].messaging;
+	for (let i = 0; i < messaging_events.length; i++) {
+	  	const event = req.body.entry[0].messaging[i];
+	  	const sender = event.sender.id;
+	  	if (event.message && event.message.text) {
+	      const text = event.message.text;
+	      console.log(text);
+	      //sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
+	    }
+	}
+	res.sendStatus(200);
+});
+
+app.listen(PORT, function () {
+  console.log('Example app is running on port 3000!');}
+); //告訴server聽取3000這個Port
+
+function test(){
 	//console.log("The file was saved!");
 	fs.writeFile("test.txt", "Hey there!", function(err) {
 		if(err) {
@@ -16,27 +47,6 @@ function test()
    	console.log("The file was saved!");
 	});
 }
-
-app.get('/', function (req, res) {
-  //res.send('<h1>Express is excellent!</h1>')
-  if (req.query['hub.verify_token'] === VERIFY_TOKEN) {
-    res.send(req.query['hub.challenge']);
-  }
-  test();
-  res.send('HAHA');
-  console.log("In get");
-});
-/*
-app.post('/', async function (ctx, next) {
-  console.log(ctx.body);
-};
-*/
-
-app.listen(PORT, function () {
-  console.log('Example app is running on port 3000!');}
-); //告訴server聽取3000這個Port
-
-
 
 
 /*
