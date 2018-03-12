@@ -21,13 +21,9 @@ app.get('/', function (req, res) {
 });
 
 app.post('/', function (req, res) {
-	var a = "post\n";
-	a = a + req.body + "\n";
-	
-	const messaging_events = req.body.entry[0].messaging;
-
-	a = a + "len:" + messaging_events.length ;
+	console.log("In post");
 	/*
+	const messaging_events = req.body.entry[0].messaging;
 	for (let i = 0; i < messaging_events.length; i++) {
 	  	const event = req.body.entry[0].messaging[i];
 	  	const sender = event.sender.id;
@@ -39,7 +35,6 @@ app.post('/', function (req, res) {
 	    }
 	}
 	*/
-	test(a);
 	res.sendStatus(200);
 });
 
