@@ -4,12 +4,14 @@ const app = express(); //建立一個Express伺服器
 
 const VERIFY_TOKEN = 'YOUR_TOKEN';
 const PAGE_TOKEN = 'PAGE_TOKEN';
+var fs = require('fs');
 
 app.get('/', function (req, res) {
   //res.send('<h1>Express is excellent!</h1>')
   if (req.query['hub.verify_token'] === VERIFY_TOKEN) {
     res.send(req.query['hub.challenge']);
   }
+ 
   res.send('Error, wrong validation token');
   console.log("In get");
 });
@@ -21,7 +23,19 @@ app.post('/', async function (ctx, next) {
 
 app.listen(PORT, function () {
   console.log('Example app is running on port 3000!');}
+  test();
+
 ); //告訴server聽取3000這個Port
+
+test = function()
+{fs.writeFile("test.txt", "Hey there!", function(err) {
+  if(err) {
+    return console.log(err);
+  }
+  console.log("The file was saved!");
+});}
+
+
 /*
 const http = require('http');
 const hostname = '127.0.0.1';
