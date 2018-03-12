@@ -11,6 +11,7 @@ app.get('/', function (req, res) {
     res.send(req.query['hub.challenge']);
   }
   res.send('Error, wrong validation token');
+  alert("HAHA");
 });
 
 app.listen(PORT, function () {
