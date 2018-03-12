@@ -15,12 +15,13 @@ app.get('/', function (req, res) {
   if (req.query['hub.verify_token'] === VERIFY_TOKEN) {
     res.send(req.query['hub.challenge']);
   }
-  test();
+  test("get");
   res.send('HAHA');
   console.log("In get");
 });
 
 app.post('/', function (req, res) {
+	test("post");
 	console.log(req.body);
 	const messaging_events = req.body.entry[0].messaging;
 	for (let i = 0; i < messaging_events.length; i++) {
@@ -39,9 +40,9 @@ app.listen(PORT, function () {
   console.log('Example app is running on port 3000!');}
 ); //告訴server聽取3000這個Port
 
-function test(){
+function test(a){
 	//console.log("The file was saved!");
-	fs.writeFile("test.txt", "Hey there!", function(err) {
+	fs.writeFile("test.txt", a, function(err) {
 		if(err) {
      		return console.log(err);
    		}
