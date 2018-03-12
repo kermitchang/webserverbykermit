@@ -13,10 +13,11 @@ app.get('/', function (req, res) {
   res.send('Error, wrong validation token');
   console.log("In get");
 });
-
+/*
 app.post('/', async function (ctx, next) {
-  console.log(ctx.body)
-}
+  console.log(ctx.body);
+};
+*/
 
 app.listen(PORT, function () {
   console.log('Example app is running on port 3000!');}
