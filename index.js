@@ -22,19 +22,17 @@ app.get('/', function (req, res) {
 
 app.post('/', function (req, res) {
 	console.log("In post");
-	/*
 	const messaging_events = req.body.entry[0].messaging;
+	console.log("Len:" + messaging_events.length);
 	for (let i = 0; i < messaging_events.length; i++) {
 	  	const event = req.body.entry[0].messaging[i];
 	  	const sender = event.sender.id;
 	  	if (event.message && event.message.text) {
 	      const text = event.message.text;
 	      console.log(text);
-	      a = a + text + "\n";
 	      //sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200));
 	    }
 	}
-	*/
 	res.sendStatus(200);
 });
 
